@@ -6,6 +6,8 @@
  * sites/default/settings.php which includes this file.
  */
 
+$config['system.logging']['error_level'] = 'verbose';
+
 // Show errors including XDEBUG trace.
 ini_set('display_errors', 1);
 if (PHP_SAPI !== 'cli') {
