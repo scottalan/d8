@@ -1,0 +1,27 @@
+{
+  "generator-outrigger-drupal": {
+    "skipWelcome": true,
+    "skipGoodbye": true,
+    "insight": false,
+    "skipInstall": true,
+    "skip-install": true,
+    "namespace": "outrigger-drupal:app",
+    "_": [],
+    "skip-cache": false,
+    "projectName": "d8",
+    "projectDescription": "Drupal 8 playground.",
+    "drupalDistro": "drupal",
+    "drupalDistroVersion": "8.x",
+    "useENV": true,
+    "hosting": "outrigger",
+    "webserver": "apache",
+    "cacheInternal": "database",
+    "proxyCache": "none",
+    "mail": "mailhog",
+    "environments": [],
+    "domain": "d8",
+    "gitRepoUrl": "git@github.com:scottalan/d8.git",
+    "flowdockApiKey": "",
+    "usePLS": false
+  }
+}
