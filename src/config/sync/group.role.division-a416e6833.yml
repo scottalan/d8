@@ -1,0 +1,17 @@
+uuid: 0c18b4e6-8820-4c44-9511-3c85f26c86f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.division
+  enforced:
+    config:
+      - user.role.administrator
+id: division-a416e6833
+label: Administrator
+weight: 2
+internal: true
+audience: outsider
+group_type: division
+permissions_ui: false
+permissions: {  }

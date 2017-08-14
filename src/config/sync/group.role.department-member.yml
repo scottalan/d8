@@ -1,0 +1,14 @@
+uuid: 8e563331-d029-428c-8eec-d8e8e1e82f62
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.department
+id: department-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: department
+permissions_ui: true
+permissions: {  }

@@ -1,0 +1,10 @@
+uuid: 987aa380-a700-45a7-b80f-ef4e93fa0fbe
+langcode: en
+status: true
+dependencies: {  }
+id: department
+label: Department
+description: ''
+creator_membership: true
+creator_wizard: false
+creator_roles: {  }

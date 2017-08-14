@@ -1,0 +1,14 @@
+uuid: 7d66dff6-4beb-4fff-ab24-d07c618bd835
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.division
+id: division-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: division
+permissions_ui: true
+permissions: {  }
