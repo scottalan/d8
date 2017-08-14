@@ -1,0 +1,14 @@
+uuid: 6fafbb0a-aed6-4fb8-bb94-5f0a7a4d093e
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.department
+id: department-anonymous
+label: Anonymous
+weight: -102
+internal: true
+audience: anonymous
+group_type: department
+permissions_ui: true
+permissions: {  }

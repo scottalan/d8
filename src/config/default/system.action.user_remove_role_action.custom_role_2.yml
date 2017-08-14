@@ -1,0 +1,14 @@
+uuid: 54802e17-8bb3-4811-a029-fb3beb7bf1d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.custom_role_2
+  module:
+    - user
+id: user_remove_role_action.custom_role_2
+label: 'Remove the Custom Role 2 role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: custom_role_2

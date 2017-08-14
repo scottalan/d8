@@ -1,0 +1,17 @@
+uuid: 774f5d9b-7f59-48af-96d3-5c7a331f2001
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.department
+  enforced:
+    config:
+      - user.role.custom_role_2
+id: department-edaae68a9
+label: 'Custom Role 2'
+weight: 4
+internal: true
+audience: outsider
+group_type: department
+permissions_ui: false
+permissions: {  }

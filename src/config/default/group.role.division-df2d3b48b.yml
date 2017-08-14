@@ -1,0 +1,17 @@
+uuid: 2549859c-473e-4687-87d4-d8236dee50ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.division
+  enforced:
+    config:
+      - user.role.custom_role_1
+id: division-df2d3b48b
+label: 'Custom Role 1'
+weight: 3
+internal: true
+audience: outsider
+group_type: division
+permissions_ui: false
+permissions: {  }

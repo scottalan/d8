@@ -1,0 +1,14 @@
+uuid: 8e01fdf9-5a7c-4dc4-bdf4-083817f34d33
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.department
+id: department-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: department
+permissions_ui: true
+permissions: {  }

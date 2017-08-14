@@ -1,0 +1,14 @@
+uuid: 23ba5f2d-ac9b-45d2-ae4b-302b41cae067
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.division
+id: division-anonymous
+label: Anonymous
+weight: -102
+internal: true
+audience: anonymous
+group_type: division
+permissions_ui: true
+permissions: {  }

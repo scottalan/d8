@@ -1,0 +1,10 @@
+uuid: c97ed15f-42fd-4556-8355-cf9b553a9000
+langcode: en
+status: true
+dependencies: {  }
+id: division
+label: Division
+description: ''
+creator_membership: true
+creator_wizard: false
+creator_roles: {  }

@@ -1,0 +1,14 @@
+uuid: 54cd6699-1e62-45c6-8f3f-dd05a0616a0f
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.division
+id: division-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: division
+permissions_ui: true
+permissions: {  }
