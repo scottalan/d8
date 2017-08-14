@@ -43,6 +43,18 @@ scripts:
       - docker-compose stop
       - rig project sync:stop
 
+  config_export:
+    alias: ce
+    description: Run one of the build container services such as 'cli' or 'drush'.
+    run:
+      - docker-compose -f build.yml run --rm drush config-export
+
+  config_import:
+    alias: ci
+    description: Run one of the build container services such as 'cli' or 'drush'.
+    run:
+      - docker-compose -f build.yml run --rm drush config-import
+
   build:
     alias: build
     description: Run the end-to-end build process.
@@ -59,7 +71,16 @@ scripts:
     alias: install
     description: Install the Drupal site.
     run:
+      #- docker-compose -f build.yml run --rm grunt install
+      # This will ensure that composer install is run.
+      - docker-compose -f build.yml run --rm grunt
+      # Drop the database and install a new site.
       - docker-compose -f build.yml run --rm grunt install
+      # Update the admin password so we don't have to find the new password.
+      - docker-compose -f build.yml run --rm drush "upwd admin --password=admin"
+      - echo 'The password for "admin" has been changed to "admin"'
+      # This is our custom development file.
+      #- git checkout src/sites/development.services.yml
 
   fix-permissions:
     alias: fix-perms

@@ -764,16 +764,6 @@ $settings['file_scan_ignore_directories'] = [
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
 
-require __DIR__ . '/../settings.common.php';
-$databases['default']['default'] = array (
-  'database' => 'd8_drupal',
-  'username' => 'admin',
-  'password' => 'admin',
-  'prefix' => '',
-  'host' => 'db',
-  'port' => '',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);
 $settings['install_profile'] = 'standard';
-$config_directories['sync'] = 'sites/default/files/config_a1YoqFpoIqE34dEad2JM8fqgn0hDaJSfApLQJgNGLgZ1UO0eYWygNg_ZC1la-m_6itkeEl_ZVA/sync';
+
+require __DIR__ . '/../settings.common.php';

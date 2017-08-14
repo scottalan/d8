@@ -30,6 +30,7 @@ $databases['default']['default'] = array (
 $conf['smtp_host'] = 'mail';
 $conf['smtp_port'] = '1025';
 
+$config_directories['sync'] = 'config/default';
 
 // Include local settings file as an override.
 // settings.local.php should not be committed to the Git repository.
