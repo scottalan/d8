@@ -1,0 +1,19 @@
+name: Custom
+type: profile
+description: 'Custom site profile.'
+core: 8.x
+distribution:
+  name: Custom
+
+# Base profile
+base profile:
+  name: lightning
+  excluded_dependencies:
+    - lightning_landing_page
+    - lightning_layout
+    - lightning_media_video
+    - lightning_page
+    - lightning_roles
+    - panelizer_quickedit
+    - quickedit
+    - panelizer

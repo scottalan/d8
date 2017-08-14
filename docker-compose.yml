@@ -1,0 +1,85 @@
+##
+# Operational services to run the application in your local or Outrigger Cloud environment.
+#
+# To ensure this works as expected for multiple environments, both environment
+# settings must be carefully respected in *every* command invocation:
+#
+# * The `DOCKER_ENV` environment variable which is used as a template parameter for
+#   how this configuration is used.
+# * The -p|--project-name option for Docker Compose, which uses the provided name
+#   in lieu of deriving key Docker namespacing from whatever the current directory
+#   happens to be named.
+#
+# When bin/start.sh is used to start up services, it configures a docker-compose
+# project of 'd8_${DOCKER_ENV:-local}' and a default DOCKER_ENV of local.
+# (${VARNAME:-default} is some BASH variable magic.)
+#
+# Warning: Multiple environments for local use require customizing the DNSDock
+# Configuration. A generic approach for this has not yet been determined.
+#
+# @see https://docs.docker.com/compose/reference/overview/
+# @see https://docs.docker.com/compose/compose-file/compose-file/
+##
+version: '3.1'
+
+services:
+  # Database service
+  db:
+    container_name: d8_${DOCKER_ENV:-local}_db
+    image: outrigger/mariadb:10.1
+    environment:
+      MYSQL_DATABASE: d8_drupal
+      # This is used by the nginx-proxy service which is part of Phase2's Outrigger hosting platform.
+      # Outrigger Cloud as a hosting platform is still for Phase2 internal use only.
+      # Add a VIRTUAL_PORT to access the service externally over port 80.
+      VIRTUAL_HOST: db-${DOCKER_ENV:-local}-d8.ci2.p2devcloud.com
+    volumes:
+      - /data/d8/${DOCKER_ENV:-local}/mysql:/var/lib/mysql
+    network_mode: "bridge"
+    labels:
+      com.dnsdock.name: db
+      com.dnsdock.image: d8
+      outrigger.project: d8
+  
+  # MailHog SMTP and UI service.
+  mail:
+    container_name: d8_${DOCKER_ENV:-local}_mail
+    image: mailhog/mailhog
+    network_mode: "bridge"
+    labels:
+      com.dnsdock.name: mail
+      com.dnsdock.image: d8
+      outrigger.project: d8
+    environment:
+      # This is used by the nginx-proxy service which is part of Phase2's Outrigger Cloud hosting.
+      # Outrigger Cloud as a hosting platform is still for Phase2 internal use only.
+      VIRTUAL_HOST: mail-${DOCKER_ENV:-local}-d8.ci2.p2devcloud.com
+      VIRTUAL_PORT: '8025'
+  
+  # Main Application service.
+  www:
+    container_name: d8_${DOCKER_ENV:-local}_www
+    image: outrigger/apache-php:php70
+    network_mode: "bridge"
+    environment:
+      DOCROOT: /var/www/build/html
+      PHP_MAX_EXECUTION_TIME: 60
+      PHP_XDEBUG: "true"
+      PHP_XHPROF: "true"
+      # Include the DOCKER_ENV so Drupal settings can be aware of environment.
+      DOCKER_ENV: ${DOCKER_ENV:-local}
+      # This is used by the nginx-proxy service which is part of Phase2's Outrigger Cloud hosting.
+      # Outrigger Cloud as a hosting platform is still for Phase2 internal use only.
+      VIRTUAL_HOST: ${DOCKER_ENV:-local}-d8.ci2.p2devcloud.com
+    links:
+      - db
+      - mail
+    volumes:
+      # Main code volume mount.
+      - .:/var/www
+      # /var/www/src is used for consistency with the build container.
+      - /data/d8/${DOCKER_ENV:-local}/files:/var/www/src/sites/default/files
+    labels:
+      com.dnsdock.name: www
+      com.dnsdock.image: d8
+      outrigger.project: d8
